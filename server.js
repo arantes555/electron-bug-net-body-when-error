@@ -32,16 +32,22 @@ class TestServer {
       res.end('world')
     }
 
+    if (p === '/304') {
+      res.statusCode = 304
+      res.setHeader('Content-Type', 'text/plain')
+      res.end() // this is a 304: Not Modified. 3xx response codes should not have bodies
+    }
+
     if (p === '/404') {
       res.statusCode = 404
       res.setHeader('Content-Type', 'text/plain')
-      res.end('this is a 404')
+      res.end('this is a 404: Not Found')
     }
 
     if (p === '/500') {
       res.statusCode = 500
       res.setHeader('Content-Type', 'text/plain')
-      res.end('this is a 500')
+      res.end('this is a 500: Server Error')
     }
   }
 }

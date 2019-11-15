@@ -44,6 +44,7 @@ electron.app.on('ready', async () => {
 
   const msg = Buffer.from('test')
   await doRequest('/hello')
+  await doRequest('/304')
   await doRequest('/404')
   await doRequest('/500')
 
